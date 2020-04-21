@@ -1,9 +1,10 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import axios from 'axios';
-import httpStatus from '@/utils/http-status';
+// import httpStatus from '@/utils/http-status';
 
+// eslint-disable-next-line
 export const airtable = axios.create({
-  baseURL: process.env.VUE_APP_API_AIRTABLE_URI
+  baseURL: process.env.VUE_APP_API_AIRTABLE_URI,
 });
 
 function getConfig(config) {
@@ -22,4 +23,4 @@ airtable.interceptors.request.use(
 airtable.interceptors.response.use(
   (response) => response,
   (error) => Promise.reject(error),
-)
+);

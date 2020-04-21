@@ -1,12 +1,10 @@
 <template>
-  <b-container class="pt-4">
-    <router-view />
-  </b-container>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'default',
+  name: 'relationship',
 };
 </script>
 
