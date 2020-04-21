@@ -10,6 +10,7 @@ import Vue from 'vue';
  */
 import './plugins/vuex';
 import './plugins/bootstrap-vue';
+import './plugins/apexcharts';
 
 /**
  * Styling
