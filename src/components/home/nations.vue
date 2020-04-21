@@ -26,13 +26,21 @@ export default {
           },
         },
         xaxis: {
-          categories: [...new Set(this.items.map((item) => item.relationship))].sort((a, b) => a.localeCompare(b)),
+          categories: [...new Set(this.items.map((item) => item.nationality))].sort((a, b) => a.localeCompare(b)),
         },
         chart: {
           id: 'age-chart',
         },
         dataLabels: {
           enabled: true,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            dataLabels: {
+              position: 'top',
+            },
+          },
         },
       };
     },

@@ -34,6 +34,14 @@ export default {
         dataLabels: {
           enabled: true,
         },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            dataLabels: {
+              position: 'top',
+            },
+          },
+        },
       };
     },
   },
