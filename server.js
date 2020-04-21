@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const dotEnv = require('dotenv');
 
 const env = `.env.${(process.env.NODE_ENV || 'development')}`;
@@ -24,7 +24,7 @@ function pathRewrite(str) {
 };
 
 // Proxy
-app.use(process.env.VUE_APP_API_AIRTABLE_URI, proxy({
+app.use(process.env.VUE_APP_API_AIRTABLE_URI, createProxyMiddleware({
   target: process.env.API_AIRTABLE_URI,
   changeOrigin: true,
   pathRewrite: pathRewrite(process.env.VUE_APP_API_AIRTABLE_URI),
