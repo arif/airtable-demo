@@ -22,3 +22,25 @@ function pathRewrite(str) {
     obj[`^${str}`] = '/';
     return obj;
 };
+
+// Proxy
+app.use(process.env.VUE_APP_API_AIRTABLE_URI, proxy({
+  target: process.env.API_AIRTABLE_URI,
+  changeOrigin: true,
+  pathRewrite: pathRewrite(process.env.VUE_APP_API_AIRTABLE_URI),
+}));
+
+app.use('/', express.static(path.join(__dirname, '/dist')));
+
+// Catch all routes and redirect to the index file.
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/dist/index.html`);
+});
+
+// Create default port to serve the app on
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`App listening on port: ${port}`);
+});
+

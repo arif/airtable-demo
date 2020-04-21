@@ -11,5 +11,14 @@ module.exports = {
     // remove the prefetch plugin.
     config.plugins.delete('prefetch');
   },
+  devServer: {
+    proxy: {
+      '/api-airtable': {
+        target: process.env.API_AIRTABLE_URI,
+        pathRewrite: { '^api-airtable': '/' },
+        changeOrigin: true,
+      },
+    },
+  },
   productionSourceMap: false,
 };
